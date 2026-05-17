@@ -524,7 +524,7 @@ fun ThemeConfigScreen(
                                     ThemeConfig.topBarOpacity
                                 ),
                                 value = ThemeConfig.topBarOpacity.toFloat(),
-                                defaultValue = 30f,
+                                defaultValue = 100f,
                                 valueRange = 0f..100f,
                                 steps = 99,
                                 onValueChange = { ThemeConfig.topBarOpacity = it.toInt() }
@@ -551,7 +551,7 @@ fun ThemeConfigScreen(
                                 ThemeConfig.containerOpacity
                             ),
                             value = ThemeConfig.containerOpacity.toFloat(),
-                            defaultValue = 15f,
+                            defaultValue = 100f,
                             valueRange = 0f..100f,
                             steps = 99,
                             onValueChange = { ThemeConfig.containerOpacity = it.toInt() }
@@ -573,7 +573,7 @@ fun ThemeConfigScreen(
                         SliderSettingItem(
                             title = stringResource(R.string.background_image_blurring),
                             value = ThemeConfig.bgImageBlurring.toFloat(),
-                            defaultValue = 26f,
+                            defaultValue = 0f,
                             valueRange = 0f..100f,
                             steps = 99,
                             onValueChange = {
@@ -597,7 +597,7 @@ fun ThemeConfigScreen(
                         SliderSettingItem(
                             title = stringResource(R.string.background_image_blurring),
                             value = ThemeConfig.bgImageNBlurring.toFloat(),
-                            defaultValue = 26f,
+                            defaultValue = 0f,
                             valueRange = 0f..100f,
                             steps = 99,
                             onValueChange = {

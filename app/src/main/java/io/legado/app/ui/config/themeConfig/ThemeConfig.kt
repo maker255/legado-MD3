@@ -16,9 +16,9 @@ data class TagColorPair(
 
 object ThemeConfig {
 
-    var containerOpacity by prefDelegate(PreferKey.containerOpacity, 15)
+    var containerOpacity by prefDelegate(PreferKey.containerOpacity, 100)
 
-    var topBarOpacity by prefDelegate(PreferKey.topBarOpacity, 30)
+    var topBarOpacity by prefDelegate(PreferKey.topBarOpacity, 100)
 
     var bottomBarOpacity by prefDelegate(PreferKey.bottomBarOpacity, 100)
 
@@ -63,9 +63,9 @@ object ThemeConfig {
         postEvent(EventBus.RECREATE, false)
     }
 
-    var bgImageBlurring by prefDelegate(PreferKey.bgImageBlurring, 26)
+    var bgImageBlurring by prefDelegate(PreferKey.bgImageBlurring, 0)
 
-    var bgImageNBlurring by prefDelegate(PreferKey.bgImageNBlurring, 26)
+    var bgImageNBlurring by prefDelegate(PreferKey.bgImageNBlurring, 0)
 
     var isPredictiveBackEnabled by prefDelegate(PreferKey.isPredictiveBackEnabled, true)
 
@@ -149,7 +149,7 @@ object ThemeConfig {
 
     var showBottomView by prefDelegate(PreferKey.showBottomView, false)
 
-    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, false)
+    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, true)
 
     var useFloatingBottomBarLiquidGlass by prefDelegate(
         PreferKey.useFloatingBottomBarLiquidGlass,
@@ -158,7 +158,7 @@ object ThemeConfig {
 
     var tabletInterface by prefDelegate(PreferKey.tabletInterface, "auto")
 
-    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "auto")
+    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "unlabeled")
 
     var defaultHomePage by prefDelegate(PreferKey.defaultHomePage, "bookshelf")
 

@@ -304,10 +304,10 @@ object AppConfig : SharedPreferences.OnSharedPreferenceChangeListener {
         }
 
     val showDiscovery: Boolean
-        get() = appCtx.getPrefBoolean(PreferKey.showDiscovery, true)
+        get() = appCtx.getPrefBoolean(PreferKey.showDiscovery, false)
 
     val showRSS: Boolean
-        get() = appCtx.getPrefBoolean(PreferKey.showRss, true)
+        get() = appCtx.getPrefBoolean(PreferKey.showRss, false)
 
     val showStatusBar: Boolean
         get() = appCtx.getPrefBoolean(PreferKey.showStatusBar, true)
@@ -883,7 +883,7 @@ object AppConfig : SharedPreferences.OnSharedPreferenceChangeListener {
         get() = hasLightBg && hasDarkBg
 
     var labelVisibilityMode
-        get() = appCtx.getPrefString(PreferKey.labelVisibilityMode, "auto")
+        get() = appCtx.getPrefString(PreferKey.labelVisibilityMode, "unlabeled") ?: "unlabeled"
         set(value) {
             appCtx.putPrefString(PreferKey.labelVisibilityMode, value)
         }

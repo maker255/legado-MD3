@@ -142,17 +142,17 @@ data class MainUiState(
     val destinations: ImmutableList<MainDestination> = MainDestination.mainDestinations,
     val defaultHomePage: String = "bookshelf",
     val showBottomView: Boolean = true,
-    val useFloatingBottomBar: Boolean = false,
+    val useFloatingBottomBar: Boolean = true,
     val useFloatingBottomBarLiquidGlass: Boolean = false,
-    val labelVisibilityMode: String = "auto",
+    val labelVisibilityMode: String = "unlabeled",
     val navExtended: Boolean = false
 )
 
 private const val NAV_EXTENDED_KEY = "navExtended"
 
 private fun MainViewModel.readMainUiState(): MainUiState {
-    val showDiscovery = context.getPrefBoolean(PreferKey.showDiscovery, true)
-    val showRss = context.getPrefBoolean(PreferKey.showRss, true)
+    val showDiscovery = context.getPrefBoolean(PreferKey.showDiscovery, false)
+    val showRss = context.getPrefBoolean(PreferKey.showRss, false)
     val destinations = MainDestination.mainDestinations.filter {
         when (it) {
             MainDestination.Explore -> showDiscovery
@@ -165,12 +165,12 @@ private fun MainViewModel.readMainUiState(): MainUiState {
         defaultHomePage = context.getPrefString(PreferKey.defaultHomePage, "bookshelf")
             ?: "bookshelf",
         showBottomView = context.getPrefBoolean(PreferKey.showBottomView, true),
-        useFloatingBottomBar = context.getPrefBoolean(PreferKey.useFloatingBottomBar, false),
+        useFloatingBottomBar = context.getPrefBoolean(PreferKey.useFloatingBottomBar, true),
         useFloatingBottomBarLiquidGlass = context.getPrefBoolean(
             PreferKey.useFloatingBottomBarLiquidGlass,
             false
         ),
-        labelVisibilityMode = context.getPrefString(PreferKey.labelVisibilityMode, "auto") ?: "auto",
+        labelVisibilityMode = context.getPrefString(PreferKey.labelVisibilityMode, "unlabeled") ?: "unlabeled",
         navExtended = context.getPrefBoolean(NAV_EXTENDED_KEY, false)
     )
 }

@@ -394,15 +394,15 @@ data class ThemeExportData(
     val customTagColorsJson: String? = null,
 
     // 主界面设置
-    val showDiscovery: Boolean = true,
-    val showRss: Boolean = true,
+    val showDiscovery: Boolean = false,
+    val showRss: Boolean = false,
     val showStatusBar: Boolean = true,
     val swipeAnimation: Boolean = true,
     val showBottomView: Boolean = true,
-    val useFloatingBottomBar: Boolean = false,
+    val useFloatingBottomBar: Boolean = true,
     val useFloatingBottomBarLiquidGlass: Boolean = false,
     val tabletInterface: String = "auto",
-    val labelVisibilityMode: String = "auto",
+    val labelVisibilityMode: String = "unlabeled",
     val defaultHomePage: String = "bookshelf",
 
     // 导航栏图标

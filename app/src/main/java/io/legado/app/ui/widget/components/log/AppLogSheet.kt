@@ -57,7 +57,7 @@ fun AppLogSheet(
         } else {
             LazyColumn(
                 modifier = Modifier.fillMaxWidth(),
-                contentPadding = PaddingValues(bottom = 16.dp)
+                contentPadding = PaddingValues(bottom = 35.dp)
             ) {
                 items(logs) { item ->
                     LogItem(item) {

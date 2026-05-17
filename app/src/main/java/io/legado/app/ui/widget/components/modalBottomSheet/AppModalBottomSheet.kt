@@ -101,7 +101,7 @@ fun AppModalBottomSheet(
             val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
             val density = LocalDensity.current
             val maxHeight = with(density) {
-                LocalWindowInfo.current.containerSize.height.toDp() * 0.8f
+                LocalWindowInfo.current.containerSize.height.toDp() * 0.6f
             }
 
             ModalBottomSheet(

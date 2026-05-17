@@ -736,7 +736,7 @@ object ReadBookConfig {
     @Keep
     data class Config(
         var name: String = "",
-        var bgStr: String = "#EEEEEE",//白天背景
+        var bgStr: String = "176.jpg",//白天背景
         var bgStrNight: String = "#000000",//夜间背景
         var menuBgColor: String = "#EEEFE3",
         var menuAcColor: String = "#EEEFE3",
@@ -744,7 +744,7 @@ object ReadBookConfig {
         var menuAcColorNight: String = "#586249",
         var bgStrEInk: String = "#FFFFFF",//EInk背景
         var bgAlpha: Int = 100,//背景透明度
-        var bgType: Int = 0,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
+        var bgType: Int = 1,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
         var bgTypeNight: Int = 0,//夜间背景类型
         var bgTypeEInk: Int = 0,//EInk背景类型
         private var darkStatusIcon: Boolean = true,//白天是否暗色状态栏
@@ -798,7 +798,7 @@ object ReadBookConfig {
         var dottedLine: Boolean = false, //虚线
         var dottedBase: Float = 6f, //长度
         var dottedRatio: Float = 6f,
-        var paddingBottom: Int = 6,
+        var paddingBottom: Int = 25,
         var paddingLeft: Int = 16,
         var paddingRight: Int = 16,
         var paddingTop: Int = 6,

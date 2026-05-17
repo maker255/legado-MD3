@@ -132,13 +132,13 @@
         app:layout="@layout/view_preference_category">
 
         <io.legado.app.lib.prefs.SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="showDiscovery"
             android:title="@string/show_discovery"
             app:iconSpaceReserved="true" />
 
         <io.legado.app.lib.prefs.SwitchPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="showRss"
             android:title="@string/show_rss"
             app:iconSpaceReserved="true" />
@@ -163,7 +163,7 @@
             app:iconSpaceReserved="true" />
 
         <io.legado.app.lib.prefs.NameListPreference
-            android:defaultValue="auto"
+            android:defaultValue="unlabeled"
             android:key="tabletInterface"
             android:title="@string/tabletInterface"
             app:entries="@array/tabletInterface"
