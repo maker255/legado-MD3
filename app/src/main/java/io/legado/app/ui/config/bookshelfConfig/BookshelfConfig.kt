@@ -15,7 +15,7 @@ object BookshelfConfig {
     /**
      * 书架分组样式: 0: Tab, 1:隐藏Tab, 2:文件夹
      */
-    private val _bookGroupStyle = prefStateDelegate(PreferKey.bookGroupStyle, 0) {
+    private val _bookGroupStyle = prefStateDelegate(PreferKey.bookGroupStyle, 1) {
         postEvent(EventBus.NOTIFY_MAIN, false)
     }
     var bookGroupStyle by _bookGroupStyle

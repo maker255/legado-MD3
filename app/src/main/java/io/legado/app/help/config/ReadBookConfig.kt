@@ -756,7 +756,7 @@ object ReadBookConfig {
         private var textAccentColor: String = "#834E00",//白天强调文字颜色
         private var textAccentColorNight: String = "#FE4D55",//夜间强调文字颜色
         private var textAccentColorEInk: String = "#000000",
-        private var pageAnim: Int = 0,//翻页动画
+        private var pageAnim: Int = 2,//翻页动画
         private var pageAnimEInk: Int = 4,
         var textFont: String = "",//字体
         var titleFont: String = "",//标题字体
@@ -822,7 +822,7 @@ object ReadBookConfig {
         var tipFooterColor: Int = 0,
         var tipDividerColor: Int = -1,
         var headerMode: Int = 0,
-        var footerMode: Int = 0,
+        var footerMode: Int = 1,
         var regexColorRules: ArrayList<RegexColorRule> = arrayListOf()
     ) {
 

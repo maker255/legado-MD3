@@ -135,13 +135,13 @@
             android:defaultValue="true"
             android:key="showDiscovery"
             android:title="@string/show_discovery"
-            app:iconSpaceReserved="false" />
+            app:iconSpaceReserved="true" />
 
         <io.legado.app.lib.prefs.SwitchPreference
             android:defaultValue="true"
             android:key="showRss"
             android:title="@string/show_rss"
-            app:iconSpaceReserved="false" />
+            app:iconSpaceReserved="true" />
 
         <io.legado.app.lib.prefs.SwitchPreference
             android:defaultValue="true"
@@ -160,7 +160,7 @@
             android:key="showBottomView"
             android:summary="@string/be_swiped"
             android:title="@string/show_bottom_nav"
-            app:iconSpaceReserved="false" />
+            app:iconSpaceReserved="true" />
 
         <io.legado.app.lib.prefs.NameListPreference
             android:defaultValue="auto"

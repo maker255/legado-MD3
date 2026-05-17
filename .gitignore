@@ -17,3 +17,5 @@ package-lock.json
 # Kotlin 2.0
 .kotlin/
 /.vscode/settings.json
+*.jks
+gradle-daemon-jvm.properties

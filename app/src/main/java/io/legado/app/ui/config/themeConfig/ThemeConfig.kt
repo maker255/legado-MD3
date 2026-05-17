@@ -16,9 +16,9 @@ data class TagColorPair(
 
 object ThemeConfig {
 
-    var containerOpacity by prefDelegate(PreferKey.containerOpacity, 100)
+    var containerOpacity by prefDelegate(PreferKey.containerOpacity, 15)
 
-    var topBarOpacity by prefDelegate(PreferKey.topBarOpacity, 100)
+    var topBarOpacity by prefDelegate(PreferKey.topBarOpacity, 30)
 
     var bottomBarOpacity by prefDelegate(PreferKey.bottomBarOpacity, 100)
 
@@ -63,9 +63,9 @@ object ThemeConfig {
         postEvent(EventBus.RECREATE, false)
     }
 
-    var bgImageBlurring by prefDelegate(PreferKey.bgImageBlurring, 0)
+    var bgImageBlurring by prefDelegate(PreferKey.bgImageBlurring, 26)
 
-    var bgImageNBlurring by prefDelegate(PreferKey.bgImageNBlurring, 0)
+    var bgImageNBlurring by prefDelegate(PreferKey.bgImageNBlurring, 26)
 
     var isPredictiveBackEnabled by prefDelegate(PreferKey.isPredictiveBackEnabled, true)
 
@@ -139,15 +139,15 @@ object ThemeConfig {
         customTagColorsJson = GSON.toJson(colors)
     }
 
-    var showDiscovery by prefDelegate(PreferKey.showDiscovery, true)
+    var showDiscovery by prefDelegate(PreferKey.showDiscovery, false)
 
-    var showRss by prefDelegate(PreferKey.showRss, true)
+    var showRss by prefDelegate(PreferKey.showRss, false)
 
     var showStatusBar by prefDelegate(PreferKey.showStatusBar, true)
 
     var swipeAnimation by prefDelegate(PreferKey.swipeAnimation, true)
 
-    var showBottomView by prefDelegate(PreferKey.showBottomView, true)
+    var showBottomView by prefDelegate(PreferKey.showBottomView, false)
 
     var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, false)
 
