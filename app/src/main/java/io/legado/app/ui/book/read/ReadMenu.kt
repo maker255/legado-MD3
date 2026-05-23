@@ -241,8 +241,6 @@ class ReadMenu @JvmOverloads constructor(
         seekReadPage.trackInactiveTintList = ColorStateList.valueOf(bgcColor)
         seekReadPage.trackActiveTintList = ColorStateList.valueOf(acColor)
         seekReadPage.thumbTintList = ColorStateList.valueOf(acColor)
-        seekReadPage.tickActiveTintList = ColorStateList.valueOf(bgColor)
-        seekReadPage.tickInactiveTintList = ColorStateList.valueOf(acColor)
         tvPre.iconTint = ColorStateList.valueOf(acColor)
         tvNext.iconTint = ColorStateList.valueOf(acColor)
         tvBookName.setTextColor(acColor)

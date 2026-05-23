@@ -1,0 +1,264 @@
+commit 0922d389e1f5d71492da5dad4d7ca3ba1f385bae
+Author: Wuying Created Local Users <admin@3o4a1pohjxfq9dh.CN-HANGZHOU-198-13-1.WUYING.LOCAL>
+Date:   Sat May 23 08:29:36 2026 +0800
+
+    android UI 3
+
+diff --git a/app/src/main/assets/bg/177.jpg b/app/src/main/assets/bg/177.jpg
+new file mode 100644
+index 000000000..e69de29bb
+diff --git "a/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg" "b/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg"
+deleted file mode 100644
+index e523ff10f..000000000
+Binary files "a/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg" "b/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg"
+deleted file mode 100644
+index fb2b2c2f7..000000000
+Binary files "a/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg" and /dev/null differ
+diff --git a/app/src/main/assets/defaultData/readConfig.json b/app/src/main/assets/defaultData/readConfig.json
+index 324f349a4..2760dfd66 100644
+--- a/app/src/main/assets/defaultData/readConfig.json
++++ b/app/src/main/assets/defaultData/readConfig.json
+@@ -1,6 +1,6 @@
+ [
+   {
+-    "bgStr": "176.jpg",
++    "bgStr": "177.jpg",
+     "bgStrEInk": "#FFFFFF",
+     "bgStrNight": "#000000",
+     "bgType": 1,
+@@ -9,39 +9,39 @@
+     "darkStatusIcon": true,
+     "darkStatusIconEInk": true,
+     "darkStatusIconNight": false,
+-    "footerMode": 1,
+-    "footerPaddingBottom": 10,
++    "footerMode": 0,
++    "footerPaddingBottom": 22,
+     "footerPaddingLeft": 13,
+-    "footerPaddingRight": 17,
++    "footerPaddingRight": 28,
+     "footerPaddingTop": 0,
+     "headerMode": 0,
+-    "headerPaddingBottom": 0,
+-    "headerPaddingLeft": 19,
+-    "headerPaddingRight": 16,
+-    "headerPaddingTop": 10,
+-    "letterSpacing": 0,
+-    "lineSpacingExtra": 10,
++    "headerPaddingBottom":3,
++    "headerPaddingLeft": 28,
++    "headerPaddingRight": 20,
++    "headerPaddingTop": 18,
++    "letterSpacing": 0.02,
++    "lineSpacingExtra": 12,
+     "name": "微信读书",
+     "paddingBottom": 18,
+-    "paddingLeft": 22,
+-    "paddingRight": 22,
+-    "paddingTop": 5,
++    "paddingLeft": 28,
++    "paddingRight": 28,
++    "paddingTop": 20,
+     "paragraphIndent": "　　",
+-    "paragraphSpacing": 6,
+-    "showFooterLine": true,
+-    "showHeaderLine": true,
++    "paragraphSpacing": 10,
++    "showFooterLine": false,
++    "showHeaderLine": false,
+     "textBold": 0,
+     "textColor": "#ff0b0b0b",
+     "textColorEInk": "#000000",
+     "textColorNight": "#ADADAD",
+-    "textSize": 24,
++    "textSize": 22,
+     "tipColor": -10461088,
+-    "tipFooterLeft": 7,
++    "tipFooterLeft": 0,
+     "tipFooterMiddle": 0,
+     "tipFooterRight": 6,
+     "tipHeaderLeft": 1,
+     "tipHeaderMiddle": 0,
+-    "tipHeaderRight": 2,
++    "tipHeaderRight": 0,
+     "titleBottomSpacing": 0,
+     "titleMode": 0,
+     "titleSize": 4,
+@@ -57,5 +57,53 @@
+     "bgTypeNight": 0,
+     "darkStatusIcon": true,
+     "darkStatusIconNight": false
++  },
++  {
++    "bgStr": "176.jpg",
++    "bgStrEInk": "#FFFFFF",
++    "bgStrNight": "#000000",
++    "bgType": 1,
++    "bgTypeEInk": 0,
++    "bgTypeNight": 0,
++    "darkStatusIcon": true,
++    "darkStatusIconEInk": true,
++    "darkStatusIconNight": false,
++    "footerMode": 1,
++    "footerPaddingBottom": 22,
++    "footerPaddingLeft": 13,
++    "footerPaddingRight": 28,
++    "footerPaddingTop": 0,
++    "headerMode": 0,
++    "headerPaddingBottom":3,
++    "headerPaddingLeft": 28,
++    "headerPaddingRight": 20,
++    "headerPaddingTop": 18,
++    "letterSpacing": 0.02,
++    "lineSpacingExtra": 12,
++    "name": "预设2",
++    "paddingBottom": 18,
++    "paddingLeft": 28,
++    "paddingRight": 28,
++    "paddingTop": 20,
++    "paragraphIndent": "　　",
++    "paragraphSpacing": 10,
++    "showFooterLine": false,
++    "showHeaderLine": false,
++    "textBold": 0,
++    "textColor": "#ff0b0b0b",
++    "textColorEInk": "#000000",
++    "textColorNight": "#ADADAD",
++    "textSize": 22,
++    "tipColor": -10461088,
++    "tipFooterLeft": 0,
++    "tipFooterMiddle": 0,
++    "tipFooterRight": 6,
++    "tipHeaderLeft": 1,
++    "tipHeaderMiddle": 0,
++    "tipHeaderRight": 0,
++    "titleBottomSpacing": 0,
++    "titleMode": 0,
++    "titleSize": 4,
++    "titleTopSpacing": 0
+   }
+ ]
+\ No newline at end of file
+diff --git a/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt b/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
+index cc70100f8..511a5e31b 100644
+--- a/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
++++ b/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
+@@ -736,7 +736,7 @@ object ReadBookConfig {
+     @Keep
+     data class Config(
+         var name: String = "",
+-        var bgStr: String = "176.jpg",//白天背景
++        var bgStr: String = "177.jpg",//白天背景
+         var bgStrNight: String = "#000000",//夜间背景
+         var menuBgColor: String = "#EEEFE3",
+         var menuAcColor: String = "#EEEFE3",
+@@ -765,7 +765,7 @@ object ReadBookConfig {
+         var headerFontSize: Int = 12,//页眉字号
+         var footerFontSize: Int = 12,//页脚字号
+         var textBold: Int = 500,//是否粗体字 0:正常, 1:粗体, 2:细体
+-        var textSize: Int = 20,//文字大小
++        var textSize: Int = 22,//文字大小
+         var textItalic: Boolean = false,// 是否启用斜体
+         var textShadow: Boolean = false,// 是否启用阴影
+         var shadowRadius: Float = 16f,// 阴影模糊半径
+@@ -773,9 +773,9 @@ object ReadBookConfig {
+         var shadowDy: Float = 1f,// 阴影y偏移
+         private var shadowColor: String = "#3E3D3B",
+         private var shadowColorN: String = "#3E3D3B",
+-        var letterSpacing: Float = 0.1f,//字间距
++        var letterSpacing: Float = 0.02f,//字间距
+         var lineSpacingExtra: Int = 12,//行间距
+-        var paragraphSpacing: Int = 2,//段距
++        var paragraphSpacing: Int = 10,//段距
+         var titleMode: Int = 0,//标题位置 0:居左 1:居中 2:隐藏
+         var titleSize: Int = 0,
+         var titleTopSpacing: Int = 0,
+@@ -798,31 +798,31 @@ object ReadBookConfig {
+         var dottedLine: Boolean = false, //虚线
+         var dottedBase: Float = 6f, //长度
+         var dottedRatio: Float = 6f,
+-        var paddingBottom: Int = 25,
+-        var paddingLeft: Int = 16,
+-        var paddingRight: Int = 16,
+-        var paddingTop: Int = 6,
+-        var headerPaddingBottom: Int = 0,
+-        var headerPaddingLeft: Int = 16,
+-        var headerPaddingRight: Int = 16,
+-        var headerPaddingTop: Int = 0,
+-        var footerPaddingBottom: Int = 6,
++        var paddingBottom: Int = 18,
++        var paddingLeft: Int = 28,
++        var paddingRight: Int = 28,
++        var paddingTop: Int = 18,
++        var headerPaddingBottom: Int = 3,
++        var headerPaddingLeft: Int = 28,
++        var headerPaddingRight: Int = 20,
++        var headerPaddingTop: Int = 22,
++        var footerPaddingBottom: Int = 22,
+         var footerPaddingLeft: Int = 16,
+-        var footerPaddingRight: Int = 16,
++        var footerPaddingRight: Int = 28,
+         var footerPaddingTop: Int = 6,
+         var showHeaderLine: Boolean = false,
+-        var showFooterLine: Boolean = true,
++        var showFooterLine: Boolean = false,
+         var tipHeaderLeft: Int = ReadTipConfig.time,
+         var tipHeaderMiddle: Int = ReadTipConfig.none,
+-        var tipHeaderRight: Int = ReadTipConfig.battery,
+-        var tipFooterLeft: Int = ReadTipConfig.chapterTitle,
++        var tipHeaderRight: Int = ReadTipConfig.none,
++        var tipFooterLeft: Int = ReadTipConfig.none,
+         var tipFooterMiddle: Int = ReadTipConfig.none,
+         var tipFooterRight: Int = ReadTipConfig.pageAndTotal,
+         var tipHeaderColor: Int = 0,
+         var tipFooterColor: Int = 0,
+         var tipDividerColor: Int = -1,
+         var headerMode: Int = 0,
+-        var footerMode: Int = 1,
++        var footerMode: Int = 0,
+         var regexColorRules: ArrayList<RegexColorRule> = arrayListOf()
+     ) {
+ 
+diff --git a/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt b/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
+index f1c847ad4..a6d1773b4 100644
+--- a/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
++++ b/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
+@@ -105,8 +105,8 @@ object ReadTipConfig {
+ 
+     fun getHeaderModes(context: Context): LinkedHashMap<Int, String> {
+         return linkedMapOf(
+-            Pair(0, context.getString(R.string.hide_when_status_bar_show)),
+-            Pair(1, context.getString(R.string.show)),
++            Pair(0, context.getString(R.string.show)),
++            Pair(1, context.getString(R.string.hide_when_status_bar_show)),
+             Pair(2, context.getString(R.string.hide))
+         )
+     }
+diff --git a/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt b/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
+index b3901e4c9..76cc90509 100644
+--- a/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
++++ b/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
+@@ -196,7 +196,7 @@ class PageView(context: Context) : FrameLayout(context) {
+         tvFooterMiddle.tag = null
+         tvFooterRight.tag = null
+         llHeader.isGone = when (ReadTipConfig.headerMode) {
+-            1 -> false
++            0 -> false
+             2 -> true
+             else -> !ReadBookConfig.hideStatusBar
+         }
+diff --git a/app/src/main/res/layout/dialog_font_config.xml b/app/src/main/res/layout/dialog_font_config.xml
+index 89b3a05e8..0c3a79d32 100644
+--- a/app/src/main/res/layout/dialog_font_config.xml
++++ b/app/src/main/res/layout/dialog_font_config.xml
+@@ -3,7 +3,8 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+-    android:layout_height="wrap_content">
++    android:layout_height="wrap_content"
++    android:paddingBottom="16dp">
+ 
+     <LinearLayout
+         android:layout_width="match_parent"

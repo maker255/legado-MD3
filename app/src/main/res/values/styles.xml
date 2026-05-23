@@ -69,4 +69,10 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="Widget.App.Slider" parent="Widget.Material3.Slider">
+        <item name="trackHeight">4dp</item>
+        <item name="tickVisible">false</item>
+        <item name="tickColor">@android:color/transparent</item>
+    </style>
+
 </resources>

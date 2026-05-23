@@ -1,0 +1,846 @@
+git diff c7b705d093de0d04f80e7e2d3a8fad907b96116f 0922d389e1f5d71492da5dad4d7ca3ba1f385bae > lagadoo-diff.log
+
+
+
+
+
+
+diff --git a/.gitignore b/.gitignore
+index b09f4e4f1..bbc4b07be 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -17,3 +17,5 @@ package-lock.json
+ # Kotlin 2.0
+ .kotlin/
+ /.vscode/settings.json
++*.jks
++gradle-daemon-jvm.properties
+diff --git a/app/build.gradle.kts b/app/build.gradle.kts
+index 1343b12df..9505208cd 100644
+--- a/app/build.gradle.kts
++++ b/app/build.gradle.kts
+@@ -8,7 +8,7 @@ plugins {
+     alias(libs.plugins.kotlin.serialization)
+     alias(libs.plugins.room)
+     alias(libs.plugins.ksp)
+-    alias(libs.plugins.google.services)
++//    alias(libs.plugins.google.services)
+     alias(libs.plugins.baselineprofile)
+ }
+ 
+@@ -48,7 +48,7 @@ android {
+     }
+ 
+     defaultConfig {
+-        applicationId = "io.legato.kazusa"
++        applicationId = "io.legato.gaodbk"
+         minSdk = 26
+         targetSdk = 37
+         versionCode = System.getenv("COMMIT_NUMBER")?.toInt()?.let { 10000 + it } ?: 32640
+@@ -120,7 +120,7 @@ android {
+         abi {
+             isEnable = true
+             reset()
+-            include("armeabi-v7a", "arm64-v8a")
++            include("arm64-v8a")
+             isUniversalApk = true
+         }
+     }
+@@ -233,9 +233,9 @@ dependencies {
+     implementation(libs.quick.chinese.transfer.core)
+     implementation(libs.hutool.crypto)
+     //noinspection GradleDependency
+-    implementation(platform(libs.firebase.bom))
+-    implementation(libs.firebase.analytics)
+-    implementation(libs.firebase.perf)
++//    implementation(platform(libs.firebase.bom))
++//    implementation(libs.firebase.analytics)
++//    implementation(libs.firebase.perf)
+     implementation(libs.androidx.datastore.preferences)
+     implementation(libs.androidx.palette)
+     implementation(libs.androidx.core.splashscreen)
+diff --git a/app/src/main/assets/bg/176.jpg b/app/src/main/assets/bg/176.jpg
+new file mode 100644
+index 000000000..10b20d9c1
+Binary files /dev/null and b/app/src/main/assets/bg/176.jpg differ
+diff --git a/app/src/main/assets/bg/177.jpg b/app/src/main/assets/bg/177.jpg
+new file mode 100644
+index 000000000..e69de29bb
+diff --git "a/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg" "b/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg"
+deleted file mode 100644
+index e523ff10f..000000000
+Binary files "a/app/src/main/assets/bg/\345\215\210\345\220\216\346\262\231\346\273\251.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg" "b/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg"
+deleted file mode 100644
+index fb2b2c2f7..000000000
+Binary files "a/app/src/main/assets/bg/\345\256\201\351\235\231\345\244\234\350\211\262.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\345\261\261\346\260\264\345\242\250\345\275\261.jpg" "b/app/src/main/assets/bg/\345\261\261\346\260\264\345\242\250\345\275\261.jpg"
+deleted file mode 100644
+index 2b1d51f8d..000000000
+Binary files "a/app/src/main/assets/bg/\345\261\261\346\260\264\345\242\250\345\275\261.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\345\261\261\346\260\264\347\224\273.jpg" "b/app/src/main/assets/bg/\345\261\261\346\260\264\347\224\273.jpg"
+deleted file mode 100644
+index f272fa881..000000000
+Binary files "a/app/src/main/assets/bg/\345\261\261\346\260\264\347\224\273.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\346\212\244\347\234\274\346\274\253\347\273\277.jpg" "b/app/src/main/assets/bg/\346\212\244\347\234\274\346\274\253\347\273\277.jpg"
+deleted file mode 100644
+index a8d79eff1..000000000
+Binary files "a/app/src/main/assets/bg/\346\212\244\347\234\274\346\274\253\347\273\277.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\346\226\260\347\276\212\347\232\256\347\272\270.jpg" "b/app/src/main/assets/bg/\346\226\260\347\276\212\347\232\256\347\272\270.jpg"
+deleted file mode 100644
+index 20782a9a9..000000000
+Binary files "a/app/src/main/assets/bg/\346\226\260\347\276\212\347\232\256\347\272\270.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\346\230\216\345\252\232\345\200\276\345\237\216.jpg" "b/app/src/main/assets/bg/\346\230\216\345\252\232\345\200\276\345\237\216.jpg"
+deleted file mode 100644
+index ec1905841..000000000
+Binary files "a/app/src/main/assets/bg/\346\230\216\345\252\232\345\200\276\345\237\216.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\346\267\261\345\256\253\351\255\205\345\275\261.jpg" "b/app/src/main/assets/bg/\346\267\261\345\256\253\351\255\205\345\275\261.jpg"
+deleted file mode 100644
+index 4529b4132..000000000
+Binary files "a/app/src/main/assets/bg/\346\267\261\345\256\253\351\255\205\345\275\261.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\346\270\205\346\226\260\346\227\266\345\205\211.jpg" "b/app/src/main/assets/bg/\346\270\205\346\226\260\346\227\266\345\205\211.jpg"
+deleted file mode 100644
+index da8f40a4d..000000000
+Binary files "a/app/src/main/assets/bg/\346\270\205\346\226\260\346\227\266\345\205\211.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2701.jpg" "b/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2701.jpg"
+deleted file mode 100644
+index 2f31c6ae2..000000000
+Binary files "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2701.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2702.jpg" "b/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2702.jpg"
+deleted file mode 100644
+index 3e46c8e0f..000000000
+Binary files "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2702.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2703.jpg" "b/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2703.jpg"
+deleted file mode 100644
+index f32a4ff9f..000000000
+Binary files "a/app/src/main/assets/bg/\347\276\212\347\232\256\347\272\2703.jpg" and /dev/null differ
+diff --git "a/app/src/main/assets/bg/\350\276\271\345\275\251\347\224\273\345\270\203.jpg" "b/app/src/main/assets/bg/\350\276\271\345\275\251\347\224\273\345\270\203.jpg"
+deleted file mode 100644
+index 492977de5..000000000
+Binary files "a/app/src/main/assets/bg/\350\276\271\345\275\251\347\224\273\345\270\203.jpg" and /dev/null differ
+diff --git a/app/src/main/assets/defaultData/readConfig.json b/app/src/main/assets/defaultData/readConfig.json
+index 110f31fb0..2760dfd66 100644
+--- a/app/src/main/assets/defaultData/readConfig.json
++++ b/app/src/main/assets/defaultData/readConfig.json
+@@ -1,47 +1,47 @@
+ [
+   {
+-    "bgStr": "#ffc0edc6",
++    "bgStr": "177.jpg",
+     "bgStrEInk": "#FFFFFF",
+     "bgStrNight": "#000000",
+-    "bgType": 0,
++    "bgType": 1,
+     "bgTypeEInk": 0,
+     "bgTypeNight": 0,
+     "darkStatusIcon": true,
+     "darkStatusIconEInk": true,
+     "darkStatusIconNight": false,
+     "footerMode": 0,
+-    "footerPaddingBottom": 10,
++    "footerPaddingBottom": 22,
+     "footerPaddingLeft": 13,
+-    "footerPaddingRight": 17,
++    "footerPaddingRight": 28,
+     "footerPaddingTop": 0,
+     "headerMode": 0,
+-    "headerPaddingBottom": 0,
+-    "headerPaddingLeft": 19,
+-    "headerPaddingRight": 16,
+-    "headerPaddingTop": 10,
+-    "letterSpacing": 0,
+-    "lineSpacingExtra": 10,
++    "headerPaddingBottom":3,
++    "headerPaddingLeft": 28,
++    "headerPaddingRight": 20,
++    "headerPaddingTop": 18,
++    "letterSpacing": 0.02,
++    "lineSpacingExtra": 12,
+     "name": "微信读书",
+-    "paddingBottom": 4,
+-    "paddingLeft": 22,
+-    "paddingRight": 22,
+-    "paddingTop": 5,
++    "paddingBottom": 18,
++    "paddingLeft": 28,
++    "paddingRight": 28,
++    "paddingTop": 20,
+     "paragraphIndent": "　　",
+-    "paragraphSpacing": 6,
+-    "showFooterLine": true,
+-    "showHeaderLine": true,
++    "paragraphSpacing": 10,
++    "showFooterLine": false,
++    "showHeaderLine": false,
+     "textBold": 0,
+     "textColor": "#ff0b0b0b",
+     "textColorEInk": "#000000",
+     "textColorNight": "#ADADAD",
+-    "textSize": 24,
++    "textSize": 22,
+     "tipColor": -10461088,
+-    "tipFooterLeft": 7,
++    "tipFooterLeft": 0,
+     "tipFooterMiddle": 0,
+     "tipFooterRight": 6,
+     "tipHeaderLeft": 1,
+     "tipHeaderMiddle": 0,
+-    "tipHeaderRight": 2,
++    "tipHeaderRight": 0,
+     "titleBottomSpacing": 0,
+     "titleMode": 0,
+     "titleSize": 4,
+@@ -59,47 +59,51 @@
+     "darkStatusIconNight": false
+   },
+   {
+-    "name": "预设2",
+-    "bgStr": "#DDC090",
+-    "bgStrNight": "#3C3F43",
+-    "textColor": "#3E3422",
+-    "textColorNight": "#DCDFE1",
+-    "bgType": 0,
++    "bgStr": "176.jpg",
++    "bgStrEInk": "#FFFFFF",
++    "bgStrNight": "#000000",
++    "bgType": 1,
++    "bgTypeEInk": 0,
+     "bgTypeNight": 0,
+     "darkStatusIcon": true,
+-    "darkStatusIconNight": false
+-  },
+-  {
+-    "name": "预设3",
+-    "bgStr": "#C2D8AA",
+-    "bgStrNight": "#3C3F43",
+-    "textColor": "#596C44",
+-    "textColorNight": "#88C16F",
+-    "bgType": 0,
+-    "bgTypeNight": 0,
+-    "darkStatusIcon": false,
+-    "darkStatusIconNight": false
+-  },
+-  {
+-    "name": "预设4",
+-    "bgStr": "#DBB8E2",
+-    "bgStrNight": "#3C3F43",
+-    "textColor": "#68516C",
+-    "textColorNight": "#F6AEAE",
+-    "bgType": 0,
+-    "bgTypeNight": 0,
+-    "darkStatusIcon": false,
+-    "darkStatusIconNight": false
+-  },
+-  {
+-    "name": "预设5",
+-    "bgStr": "#ABCEE0",
+-    "bgStrNight": "#3C3F43",
+-    "textColor": "#3D4C54",
+-    "textColorNight": "#90BFF5",
+-    "bgType": 0,
+-    "bgTypeNight": 0,
+-    "darkStatusIcon": false,
+-    "darkStatusIconNight": false
++    "darkStatusIconEInk": true,
++    "darkStatusIconNight": false,
++    "footerMode": 1,
++    "footerPaddingBottom": 22,
++    "footerPaddingLeft": 13,
++    "footerPaddingRight": 28,
++    "footerPaddingTop": 0,
++    "headerMode": 0,
++    "headerPaddingBottom":3,
++    "headerPaddingLeft": 28,
++    "headerPaddingRight": 20,
++    "headerPaddingTop": 18,
++    "letterSpacing": 0.02,
++    "lineSpacingExtra": 12,
++    "name": "预设2",
++    "paddingBottom": 18,
++    "paddingLeft": 28,
++    "paddingRight": 28,
++    "paddingTop": 20,
++    "paragraphIndent": "　　",
++    "paragraphSpacing": 10,
++    "showFooterLine": false,
++    "showHeaderLine": false,
++    "textBold": 0,
++    "textColor": "#ff0b0b0b",
++    "textColorEInk": "#000000",
++    "textColorNight": "#ADADAD",
++    "textSize": 22,
++    "tipColor": -10461088,
++    "tipFooterLeft": 0,
++    "tipFooterMiddle": 0,
++    "tipFooterRight": 6,
++    "tipHeaderLeft": 1,
++    "tipHeaderMiddle": 0,
++    "tipHeaderRight": 0,
++    "titleBottomSpacing": 0,
++    "titleMode": 0,
++    "titleSize": 4,
++    "titleTopSpacing": 0
+   }
+ ]
+\ No newline at end of file
+diff --git a/app/src/main/assets/updateLog.md b/app/src/main/assets/updateLog.md
+index 40850d9ae..aab3c4133 100644
+--- a/app/src/main/assets/updateLog.md
++++ b/app/src/main/assets/updateLog.md
+@@ -1,22 +1,15 @@
+-# 更新日志
+-
+-* 关注公众号 **[开源阅读]** 菜单•软件下载 提前享受新版本。
+-* 关注合作公众号 **[小说拾遗]** 获取好看的小说。
+-
+-## cronet版本: 128.0.6613.40
++# 更新cronet版本:
++128.0.6613.40
+ 
+ ## **必读**
+ 
+ 【温馨提醒】 *更新前一定要做好备份，以免数据丢失！*
+ 
+-* 阅读只是一个转码工具，不提供内容，第一次安装app，需要自己手动导入书源，可以从公众号 **[开源阅读]**
++* 阅读只是一个转码工具，不提供内容，第一次安装app，需要自己手动导入书源，可以从
+   、QQ群、酷安评论里获取由书友制作分享的书源。
+ * 正文出现缺字漏字、内容缺失、排版错乱等情况，有可能是净化规则或简繁转换出现问题。
+-* 漫画源看书显示乱码，**阅读与其他软件的源并不通用**，请导入阅读的支持的漫画源！
++* 漫画源看书显示乱码，**阅读与其他软件的源并不通用**
+ 
+-**2025/03/26**
+-* 目前阅读被恶意注册软著，并建立了多个公众号
+-* 官方公众号仅有：开源阅读、开源阅读软件，其他公众号与本软件无关
+ 
+ **2024/10/03**
+ * web书架支持加载网络字体、试读非书架书籍后弹窗、自定义后端IP
+diff --git a/app/src/main/java/io/legado/app/data/AppDatabase.kt b/app/src/main/java/io/legado/app/data/AppDatabase.kt
+index 4df0965e6..7ddac515e 100644
+--- a/app/src/main/java/io/legado/app/data/AppDatabase.kt
++++ b/app/src/main/java/io/legado/app/data/AppDatabase.kt
+@@ -176,56 +176,56 @@ abstract class AppDatabase : RoomDatabase() {
+                 @Language("sql")
+                 val insertBookGroupLocalSql = """
+                     insert into book_groups(groupId, groupName, 'order', enableRefresh, show) 
+-                    select ${BookGroup.IdLocal}, '本地', -9, 0, 1
++                    select ${BookGroup.IdLocal}, '本地', -9, 0, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdLocal})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupLocalSql)
+                 @Language("sql")
+                 val insertBookGroupTextSql = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdText}, '小说', -26, 1
++                    select ${BookGroup.IdText}, '小说', -26, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdText})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupTextSql)
+                 @Language("sql")
+                 val insertBookGroupMangaSql = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdManga}, '漫画', -25, 1
++                    select ${BookGroup.IdManga}, '漫画', -25, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdManga})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupMangaSql)
+                 @Language("sql")
+                 val insertBookGroupMusicSql = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdAudio}, '音频', -8, 1
++                    select ${BookGroup.IdAudio}, '音频', -8, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdAudio})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupMusicSql)
+                 Language("sql")
+                 val insertGroupReading = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdReading}, '在读', -30, 1
++                    select ${BookGroup.IdReading}, '在读', -30, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdReading})
+                 """.trimIndent()
+                 db.execSQL(insertGroupReading)
+                 @Language("sql")
+                 val insertGroupUnread = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdUnread}, '未读', -29, 1
++                    select ${BookGroup.IdUnread}, '未读', -29, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdUnread})
+                 """.trimIndent()
+                 db.execSQL(insertGroupUnread)
+                 @Language("sql")
+                 val insertGroupReadFinished = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdReadFinished}, '已读', -28, 1
++                    select ${BookGroup.IdReadFinished}, '已读', -28, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdReadFinished})
+                 """.trimIndent()
+                 db.execSQL(insertGroupReadFinished)
+                 @Language("sql")
+                 val insertBookGroupNetNoneGroupSql = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdNetNone}, '网络未分组', -7, 1
++                    select ${BookGroup.IdNetNone}, '网络未分组', -7, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdNetNone})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupNetNoneGroupSql)
+@@ -239,7 +239,7 @@ abstract class AppDatabase : RoomDatabase() {
+                 @Language("sql")
+                 val insertBookGroupErrorSql = """
+                     insert into book_groups(groupId, groupName, 'order', show) 
+-                    select ${BookGroup.IdError}, '更新失败', -1, 1
++                    select ${BookGroup.IdError}, '更新失败', -1, 0
+                     where not exists (select * from book_groups where groupId = ${BookGroup.IdError})
+                 """.trimIndent()
+                 db.execSQL(insertBookGroupErrorSql)
+diff --git a/app/src/main/java/io/legado/app/help/config/AppConfig.kt b/app/src/main/java/io/legado/app/help/config/AppConfig.kt
+index 8476d4395..d53d2c790 100644
+--- a/app/src/main/java/io/legado/app/help/config/AppConfig.kt
++++ b/app/src/main/java/io/legado/app/help/config/AppConfig.kt
+@@ -304,10 +304,10 @@ object AppConfig : SharedPreferences.OnSharedPreferenceChangeListener {
+         }
+ 
+     val showDiscovery: Boolean
+-        get() = appCtx.getPrefBoolean(PreferKey.showDiscovery, true)
++        get() = appCtx.getPrefBoolean(PreferKey.showDiscovery, false)
+ 
+     val showRSS: Boolean
+-        get() = appCtx.getPrefBoolean(PreferKey.showRss, true)
++        get() = appCtx.getPrefBoolean(PreferKey.showRss, false)
+ 
+     val showStatusBar: Boolean
+         get() = appCtx.getPrefBoolean(PreferKey.showStatusBar, true)
+@@ -883,7 +883,7 @@ object AppConfig : SharedPreferences.OnSharedPreferenceChangeListener {
+         get() = hasLightBg && hasDarkBg
+ 
+     var labelVisibilityMode
+-        get() = appCtx.getPrefString(PreferKey.labelVisibilityMode, "auto")
++        get() = appCtx.getPrefString(PreferKey.labelVisibilityMode, "unlabeled") ?: "unlabeled"
+         set(value) {
+             appCtx.putPrefString(PreferKey.labelVisibilityMode, value)
+         }
+diff --git a/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt b/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
+index 2aad1d834..511a5e31b 100644
+--- a/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
++++ b/app/src/main/java/io/legado/app/help/config/ReadBookConfig.kt
+@@ -736,7 +736,7 @@ object ReadBookConfig {
+     @Keep
+     data class Config(
+         var name: String = "",
+-        var bgStr: String = "#EEEEEE",//白天背景
++        var bgStr: String = "177.jpg",//白天背景
+         var bgStrNight: String = "#000000",//夜间背景
+         var menuBgColor: String = "#EEEFE3",
+         var menuAcColor: String = "#EEEFE3",
+@@ -744,7 +744,7 @@ object ReadBookConfig {
+         var menuAcColorNight: String = "#586249",
+         var bgStrEInk: String = "#FFFFFF",//EInk背景
+         var bgAlpha: Int = 100,//背景透明度
+-        var bgType: Int = 0,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
++        var bgType: Int = 1,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
+         var bgTypeNight: Int = 0,//夜间背景类型
+         var bgTypeEInk: Int = 0,//EInk背景类型
+         private var darkStatusIcon: Boolean = true,//白天是否暗色状态栏
+@@ -756,7 +756,7 @@ object ReadBookConfig {
+         private var textAccentColor: String = "#834E00",//白天强调文字颜色
+         private var textAccentColorNight: String = "#FE4D55",//夜间强调文字颜色
+         private var textAccentColorEInk: String = "#000000",
+-        private var pageAnim: Int = 0,//翻页动画
++        private var pageAnim: Int = 2,//翻页动画
+         private var pageAnimEInk: Int = 4,
+         var textFont: String = "",//字体
+         var titleFont: String = "",//标题字体
+@@ -765,7 +765,7 @@ object ReadBookConfig {
+         var headerFontSize: Int = 12,//页眉字号
+         var footerFontSize: Int = 12,//页脚字号
+         var textBold: Int = 500,//是否粗体字 0:正常, 1:粗体, 2:细体
+-        var textSize: Int = 20,//文字大小
++        var textSize: Int = 22,//文字大小
+         var textItalic: Boolean = false,// 是否启用斜体
+         var textShadow: Boolean = false,// 是否启用阴影
+         var shadowRadius: Float = 16f,// 阴影模糊半径
+@@ -773,9 +773,9 @@ object ReadBookConfig {
+         var shadowDy: Float = 1f,// 阴影y偏移
+         private var shadowColor: String = "#3E3D3B",
+         private var shadowColorN: String = "#3E3D3B",
+-        var letterSpacing: Float = 0.1f,//字间距
++        var letterSpacing: Float = 0.02f,//字间距
+         var lineSpacingExtra: Int = 12,//行间距
+-        var paragraphSpacing: Int = 2,//段距
++        var paragraphSpacing: Int = 10,//段距
+         var titleMode: Int = 0,//标题位置 0:居左 1:居中 2:隐藏
+         var titleSize: Int = 0,
+         var titleTopSpacing: Int = 0,
+@@ -798,24 +798,24 @@ object ReadBookConfig {
+         var dottedLine: Boolean = false, //虚线
+         var dottedBase: Float = 6f, //长度
+         var dottedRatio: Float = 6f,
+-        var paddingBottom: Int = 6,
+-        var paddingLeft: Int = 16,
+-        var paddingRight: Int = 16,
+-        var paddingTop: Int = 6,
+-        var headerPaddingBottom: Int = 0,
+-        var headerPaddingLeft: Int = 16,
+-        var headerPaddingRight: Int = 16,
+-        var headerPaddingTop: Int = 0,
+-        var footerPaddingBottom: Int = 6,
++        var paddingBottom: Int = 18,
++        var paddingLeft: Int = 28,
++        var paddingRight: Int = 28,
++        var paddingTop: Int = 18,
++        var headerPaddingBottom: Int = 3,
++        var headerPaddingLeft: Int = 28,
++        var headerPaddingRight: Int = 20,
++        var headerPaddingTop: Int = 22,
++        var footerPaddingBottom: Int = 22,
+         var footerPaddingLeft: Int = 16,
+-        var footerPaddingRight: Int = 16,
++        var footerPaddingRight: Int = 28,
+         var footerPaddingTop: Int = 6,
+         var showHeaderLine: Boolean = false,
+-        var showFooterLine: Boolean = true,
++        var showFooterLine: Boolean = false,
+         var tipHeaderLeft: Int = ReadTipConfig.time,
+         var tipHeaderMiddle: Int = ReadTipConfig.none,
+-        var tipHeaderRight: Int = ReadTipConfig.battery,
+-        var tipFooterLeft: Int = ReadTipConfig.chapterTitle,
++        var tipHeaderRight: Int = ReadTipConfig.none,
++        var tipFooterLeft: Int = ReadTipConfig.none,
+         var tipFooterMiddle: Int = ReadTipConfig.none,
+         var tipFooterRight: Int = ReadTipConfig.pageAndTotal,
+         var tipHeaderColor: Int = 0,
+diff --git a/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt b/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
+index f1c847ad4..a6d1773b4 100644
+--- a/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
++++ b/app/src/main/java/io/legado/app/help/config/ReadTipConfig.kt
+@@ -105,8 +105,8 @@ object ReadTipConfig {
+ 
+     fun getHeaderModes(context: Context): LinkedHashMap<Int, String> {
+         return linkedMapOf(
+-            Pair(0, context.getString(R.string.hide_when_status_bar_show)),
+-            Pair(1, context.getString(R.string.show)),
++            Pair(0, context.getString(R.string.show)),
++            Pair(1, context.getString(R.string.hide_when_status_bar_show)),
+             Pair(2, context.getString(R.string.hide))
+         )
+     }
+diff --git a/app/src/main/java/io/legado/app/help/config/ThemeImportExport.kt b/app/src/main/java/io/legado/app/help/config/ThemeImportExport.kt
+index 6473737d3..ecf8158b2 100644
+--- a/app/src/main/java/io/legado/app/help/config/ThemeImportExport.kt
++++ b/app/src/main/java/io/legado/app/help/config/ThemeImportExport.kt
+@@ -394,15 +394,15 @@ data class ThemeExportData(
+     val customTagColorsJson: String? = null,
+ 
+     // 主界面设置
+-    val showDiscovery: Boolean = true,
+-    val showRss: Boolean = true,
++    val showDiscovery: Boolean = false,
++    val showRss: Boolean = false,
+     val showStatusBar: Boolean = true,
+     val swipeAnimation: Boolean = true,
+     val showBottomView: Boolean = true,
+-    val useFloatingBottomBar: Boolean = false,
++    val useFloatingBottomBar: Boolean = true,
+     val useFloatingBottomBarLiquidGlass: Boolean = false,
+     val tabletInterface: String = "auto",
+-    val labelVisibilityMode: String = "auto",
++    val labelVisibilityMode: String = "unlabeled",
+     val defaultHomePage: String = "bookshelf",
+ 
+     // 导航栏图标
+diff --git a/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt b/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
+index b3901e4c9..76cc90509 100644
+--- a/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
++++ b/app/src/main/java/io/legado/app/ui/book/read/page/PageView.kt
+@@ -196,7 +196,7 @@ class PageView(context: Context) : FrameLayout(context) {
+         tvFooterMiddle.tag = null
+         tvFooterRight.tag = null
+         llHeader.isGone = when (ReadTipConfig.headerMode) {
+-            1 -> false
++            0 -> false
+             2 -> true
+             else -> !ReadBookConfig.hideStatusBar
+         }
+diff --git a/app/src/main/java/io/legado/app/ui/config/bookshelfConfig/BookshelfConfig.kt b/app/src/main/java/io/legado/app/ui/config/bookshelfConfig/BookshelfConfig.kt
+index 760baa44f..f498cb83e 100644
+--- a/app/src/main/java/io/legado/app/ui/config/bookshelfConfig/BookshelfConfig.kt
++++ b/app/src/main/java/io/legado/app/ui/config/bookshelfConfig/BookshelfConfig.kt
+@@ -15,7 +15,7 @@ object BookshelfConfig {
+     /**
+      * 书架分组样式: 0: Tab, 1:隐藏Tab, 2:文件夹
+      */
+-    private val _bookGroupStyle = prefStateDelegate(PreferKey.bookGroupStyle, 0) {
++    private val _bookGroupStyle = prefStateDelegate(PreferKey.bookGroupStyle, 1) {
+         postEvent(EventBus.NOTIFY_MAIN, false)
+     }
+     var bookGroupStyle by _bookGroupStyle
+diff --git a/app/src/main/java/io/legado/app/ui/config/mainConfig/MainConfig.kt b/app/src/main/java/io/legado/app/ui/config/mainConfig/MainConfig.kt
+index f982eada5..3c358582d 100644
+--- a/app/src/main/java/io/legado/app/ui/config/mainConfig/MainConfig.kt
++++ b/app/src/main/java/io/legado/app/ui/config/mainConfig/MainConfig.kt
+@@ -4,17 +4,17 @@ import io.legado.app.constant.PreferKey
+ import io.legado.app.ui.config.prefDelegate
+ 
+ object MainConfig {
+-    var showDiscovery by prefDelegate(PreferKey.showDiscovery, true)
+-    var showRSS by prefDelegate(PreferKey.showRss, true)
++    var showDiscovery by prefDelegate(PreferKey.showDiscovery, false)
++    var showRSS by prefDelegate(PreferKey.showRss, false)
+     var showBottomView by prefDelegate(PreferKey.showBottomView, true)
+-    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, false)
++    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, true)
+     var useFloatingBottomBarLiquidGlass by prefDelegate(
+         PreferKey.useFloatingBottomBarLiquidGlass,
+         false
+     )
+     var defaultHomePage by prefDelegate(PreferKey.defaultHomePage, "bookshelf")
+     var tabletInterface by prefDelegate(PreferKey.tabletInterface, "auto")
+-    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "auto")
++    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "unlabeled")
+     var swipeAnimation by prefDelegate(PreferKey.swipeAnimation, true)
+     var navExtended by prefDelegate("navExtended", false)
+     var webServiceAutoStart by prefDelegate(PreferKey.webServiceAutoStart, false)
+diff --git a/app/src/main/java/io/legado/app/ui/config/themeConfig/ThemeConfig.kt b/app/src/main/java/io/legado/app/ui/config/themeConfig/ThemeConfig.kt
+index a1213281f..c6b9f1e95 100644
+--- a/app/src/main/java/io/legado/app/ui/config/themeConfig/ThemeConfig.kt
++++ b/app/src/main/java/io/legado/app/ui/config/themeConfig/ThemeConfig.kt
+@@ -139,17 +139,17 @@ object ThemeConfig {
+         customTagColorsJson = GSON.toJson(colors)
+     }
+ 
+-    var showDiscovery by prefDelegate(PreferKey.showDiscovery, true)
++    var showDiscovery by prefDelegate(PreferKey.showDiscovery, false)
+ 
+-    var showRss by prefDelegate(PreferKey.showRss, true)
++    var showRss by prefDelegate(PreferKey.showRss, false)
+ 
+     var showStatusBar by prefDelegate(PreferKey.showStatusBar, true)
+ 
+     var swipeAnimation by prefDelegate(PreferKey.swipeAnimation, true)
+ 
+-    var showBottomView by prefDelegate(PreferKey.showBottomView, true)
++    var showBottomView by prefDelegate(PreferKey.showBottomView, false)
+ 
+-    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, false)
++    var useFloatingBottomBar by prefDelegate(PreferKey.useFloatingBottomBar, true)
+ 
+     var useFloatingBottomBarLiquidGlass by prefDelegate(
+         PreferKey.useFloatingBottomBarLiquidGlass,
+@@ -158,7 +158,7 @@ object ThemeConfig {
+ 
+     var tabletInterface by prefDelegate(PreferKey.tabletInterface, "auto")
+ 
+-    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "auto")
++    var labelVisibilityMode by prefDelegate(PreferKey.labelVisibilityMode, "unlabeled")
+ 
+     var defaultHomePage by prefDelegate(PreferKey.defaultHomePage, "bookshelf")
+ 
+diff --git a/app/src/main/java/io/legado/app/ui/main/MainViewModel.kt b/app/src/main/java/io/legado/app/ui/main/MainViewModel.kt
+index ac5e3297e..32f81a315 100644
+--- a/app/src/main/java/io/legado/app/ui/main/MainViewModel.kt
++++ b/app/src/main/java/io/legado/app/ui/main/MainViewModel.kt
+@@ -142,17 +142,17 @@ data class MainUiState(
+     val destinations: ImmutableList<MainDestination> = MainDestination.mainDestinations,
+     val defaultHomePage: String = "bookshelf",
+     val showBottomView: Boolean = true,
+-    val useFloatingBottomBar: Boolean = false,
++    val useFloatingBottomBar: Boolean = true,
+     val useFloatingBottomBarLiquidGlass: Boolean = false,
+-    val labelVisibilityMode: String = "auto",
++    val labelVisibilityMode: String = "unlabeled",
+     val navExtended: Boolean = false
+ )
+ 
+ private const val NAV_EXTENDED_KEY = "navExtended"
+ 
+ private fun MainViewModel.readMainUiState(): MainUiState {
+-    val showDiscovery = context.getPrefBoolean(PreferKey.showDiscovery, true)
+-    val showRss = context.getPrefBoolean(PreferKey.showRss, true)
++    val showDiscovery = context.getPrefBoolean(PreferKey.showDiscovery, false)
++    val showRss = context.getPrefBoolean(PreferKey.showRss, false)
+     val destinations = MainDestination.mainDestinations.filter {
+         when (it) {
+             MainDestination.Explore -> showDiscovery
+@@ -165,12 +165,12 @@ private fun MainViewModel.readMainUiState(): MainUiState {
+         defaultHomePage = context.getPrefString(PreferKey.defaultHomePage, "bookshelf")
+             ?: "bookshelf",
+         showBottomView = context.getPrefBoolean(PreferKey.showBottomView, true),
+-        useFloatingBottomBar = context.getPrefBoolean(PreferKey.useFloatingBottomBar, false),
++        useFloatingBottomBar = context.getPrefBoolean(PreferKey.useFloatingBottomBar, true),
+         useFloatingBottomBarLiquidGlass = context.getPrefBoolean(
+             PreferKey.useFloatingBottomBarLiquidGlass,
+             false
+         ),
+-        labelVisibilityMode = context.getPrefString(PreferKey.labelVisibilityMode, "auto") ?: "auto",
++        labelVisibilityMode = context.getPrefString(PreferKey.labelVisibilityMode, "unlabeled") ?: "unlabeled",
+         navExtended = context.getPrefBoolean(NAV_EXTENDED_KEY, false)
+     )
+ }
+diff --git a/app/src/main/java/io/legado/app/ui/widget/components/log/AppLogSheet.kt b/app/src/main/java/io/legado/app/ui/widget/components/log/AppLogSheet.kt
+index c32920750..05af2bbc5 100644
+--- a/app/src/main/java/io/legado/app/ui/widget/components/log/AppLogSheet.kt
++++ b/app/src/main/java/io/legado/app/ui/widget/components/log/AppLogSheet.kt
+@@ -57,7 +57,7 @@ fun AppLogSheet(
+         } else {
+             LazyColumn(
+                 modifier = Modifier.fillMaxWidth(),
+-                contentPadding = PaddingValues(bottom = 16.dp)
++                contentPadding = PaddingValues(bottom = 35.dp)
+             ) {
+                 items(logs) { item ->
+                     LogItem(item) {
+diff --git a/app/src/main/java/io/legado/app/ui/widget/components/modalBottomSheet/AppModalBottomSheet.kt b/app/src/main/java/io/legado/app/ui/widget/components/modalBottomSheet/AppModalBottomSheet.kt
+index 26d1645cb..58b083a4e 100644
+--- a/app/src/main/java/io/legado/app/ui/widget/components/modalBottomSheet/AppModalBottomSheet.kt
++++ b/app/src/main/java/io/legado/app/ui/widget/components/modalBottomSheet/AppModalBottomSheet.kt
+@@ -101,7 +101,7 @@ fun AppModalBottomSheet(
+             val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
+             val density = LocalDensity.current
+             val maxHeight = with(density) {
+-                LocalWindowInfo.current.containerSize.height.toDp() * 0.8f
++                LocalWindowInfo.current.containerSize.height.toDp() * 0.6f
+             }
+ 
+             ModalBottomSheet(
+diff --git a/app/src/main/java/io/legado/app/utils/FirebaseManager.kt b/app/src/main/java/io/legado/app/utils/FirebaseManager.kt
+index 3b1362825..c7de584b2 100644
+--- a/app/src/main/java/io/legado/app/utils/FirebaseManager.kt
++++ b/app/src/main/java/io/legado/app/utils/FirebaseManager.kt
+@@ -1,8 +1,8 @@
+ package io.legado.app.utils
+ 
+ import android.content.Context
+-import com.google.firebase.FirebaseApp
+-import com.google.firebase.analytics.FirebaseAnalytics
++//import com.google.firebase.FirebaseApp
++//import com.google.firebase.analytics.FirebaseAnalytics
+ import io.legado.app.help.config.AppConfig
+ 
+ object FirebaseManager {
+@@ -23,19 +23,19 @@ object FirebaseManager {
+ 
+     private fun applyState(context: Context, enabled: Boolean) {
+         if (enabled) {
+-            if (FirebaseApp.getApps(context).isEmpty()) {
+-                FirebaseApp.initializeApp(context)
+-            }
+-            FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(true)
++//            if (FirebaseApp.getApps(context).isEmpty()) {
++//                FirebaseApp.initializeApp(context)
++//            }
++//            FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(true)
+         } else {
+-            try {
+-                if (FirebaseApp.getApps(context).isNotEmpty()) {
+-                    FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(false)
+-                    FirebaseApp.getInstance().delete()
+-                }
+-            } catch (_: Exception) {
++//            try {
++//                if (FirebaseApp.getApps(context).isNotEmpty()) {
++//                    FirebaseAnalytics.getInstance(context).setAnalyticsCollectionEnabled(false)
++//                    FirebaseApp.getInstance().delete()
++//                }
++//            } catch (_: Exception) {
+                 // 忽略异常
+-            }
++//            }
+         }
+         isEnabled = enabled
+     }
+diff --git a/app/src/main/res/layout/dialog_font_config.xml b/app/src/main/res/layout/dialog_font_config.xml
+index 89b3a05e8..0c3a79d32 100644
+--- a/app/src/main/res/layout/dialog_font_config.xml
++++ b/app/src/main/res/layout/dialog_font_config.xml
+@@ -3,7 +3,8 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+-    android:layout_height="wrap_content">
++    android:layout_height="wrap_content"
++    android:paddingBottom="16dp">
+ 
+     <LinearLayout
+         android:layout_width="match_parent"
+diff --git a/app/src/main/res/xml/pref_config_theme.xml b/app/src/main/res/xml/pref_config_theme.xml
+index 897b1eccf..107802a1e 100644
+--- a/app/src/main/res/xml/pref_config_theme.xml
++++ b/app/src/main/res/xml/pref_config_theme.xml
+@@ -132,16 +132,16 @@
+         app:layout="@layout/view_preference_category">
+ 
+         <io.legado.app.lib.prefs.SwitchPreference
+-            android:defaultValue="true"
++            android:defaultValue="false"
+             android:key="showDiscovery"
+             android:title="@string/show_discovery"
+-            app:iconSpaceReserved="false" />
++            app:iconSpaceReserved="true" />
+ 
+         <io.legado.app.lib.prefs.SwitchPreference
+-            android:defaultValue="true"
++            android:defaultValue="false"
+             android:key="showRss"
+             android:title="@string/show_rss"
+-            app:iconSpaceReserved="false" />
++            app:iconSpaceReserved="true" />
+ 
+         <io.legado.app.lib.prefs.SwitchPreference
+             android:defaultValue="true"
+@@ -160,10 +160,10 @@
+             android:key="showBottomView"
+             android:summary="@string/be_swiped"
+             android:title="@string/show_bottom_nav"
+-            app:iconSpaceReserved="false" />
++            app:iconSpaceReserved="true" />
+ 
+         <io.legado.app.lib.prefs.NameListPreference
+-            android:defaultValue="auto"
++            android:defaultValue="unlabeled"
+             android:key="tabletInterface"
+             android:title="@string/tabletInterface"
+             app:entries="@array/tabletInterface"
+diff --git a/gradle.properties b/gradle.properties
+index b14520e17..0cea1ade2 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -46,4 +46,9 @@ android.dependency.useConstraints=true
+ android.generateSyncIssueWhenLibraryConstraintsAreEnabled=false
+ android.r8.strictFullModeForKeepRules=false
+ org.gradle.configuration-cache=true
+-android.newDsl=false
+\ No newline at end of file
++android.newDsl=false
++
++RELEASE_STORE_FILE=lygdkey.jks
++RELEASE_STORE_PASSWORD=lygdkey
++RELEASE_KEY_ALIAS=lygxiangljjl
++RELEASE_KEY_PASSWORD=lygdkey
+diff --git a/gradle/gradle-daemon-jvm.properties b/gradle/gradle-daemon-jvm.properties
+index 5c34300fa..f870af50b 100644
+--- a/gradle/gradle-daemon-jvm.properties
++++ b/gradle/gradle-daemon-jvm.properties
+@@ -1,13 +1,12 @@
+ #This file is generated by updateDaemonJvm
+-toolchainUrl.FREE_BSD.AARCH64=https\://api.foojay.io/disco/v3.0/ids/56a19bc915b9ba2eb62ba7554c61b919/redirect
+-toolchainUrl.FREE_BSD.X86_64=https\://api.foojay.io/disco/v3.0/ids/398ffe3949748bfb1d5636f023d228fd/redirect
+-toolchainUrl.LINUX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/56a19bc915b9ba2eb62ba7554c61b919/redirect
+-toolchainUrl.LINUX.X86_64=https\://api.foojay.io/disco/v3.0/ids/398ffe3949748bfb1d5636f023d228fd/redirect
+-toolchainUrl.MAC_OS.AARCH64=https\://api.foojay.io/disco/v3.0/ids/e99bae143b75f9a10ead10248f02055e/redirect
+-toolchainUrl.MAC_OS.X86_64=https\://api.foojay.io/disco/v3.0/ids/04e088f8677de3b384108493cc9481d0/redirect
+-toolchainUrl.UNIX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/56a19bc915b9ba2eb62ba7554c61b919/redirect
+-toolchainUrl.UNIX.X86_64=https\://api.foojay.io/disco/v3.0/ids/398ffe3949748bfb1d5636f023d228fd/redirect
+-toolchainUrl.WINDOWS.AARCH64=https\://api.foojay.io/disco/v3.0/ids/e55dccbfe27cb97945148c61a39c89c5/redirect
+-toolchainUrl.WINDOWS.X86_64=https\://api.foojay.io/disco/v3.0/ids/dbd05c4936d573642f94cd149e1356c8/redirect
+-toolchainVendor=JETBRAINS
+-toolchainVersion=21
++toolchainUrl.FREE_BSD.AARCH64=https\://api.foojay.io/disco/v3.0/ids/383d972a977a9ec74f8eb175a980a2f3/redirect
++toolchainUrl.FREE_BSD.X86_64=https\://api.foojay.io/disco/v3.0/ids/466f185020ff3c07ab32696653613a8d/redirect
++toolchainUrl.LINUX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/383d972a977a9ec74f8eb175a980a2f3/redirect
++toolchainUrl.LINUX.X86_64=https\://api.foojay.io/disco/v3.0/ids/466f185020ff3c07ab32696653613a8d/redirect
++toolchainUrl.MAC_OS.AARCH64=https\://api.foojay.io/disco/v3.0/ids/6153b48c463751a85519c9ff41ad94ef/redirect
++toolchainUrl.MAC_OS.X86_64=https\://api.foojay.io/disco/v3.0/ids/1eb45aa4611624296b0eece6307c88dd/redirect
++toolchainUrl.UNIX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/383d972a977a9ec74f8eb175a980a2f3/redirect
++toolchainUrl.UNIX.X86_64=https\://api.foojay.io/disco/v3.0/ids/466f185020ff3c07ab32696653613a8d/redirect
++toolchainUrl.WINDOWS.X86_64=https\://api.foojay.io/disco/v3.0/ids/4d65f19c26cef5b0734056c13a38d338/redirect
++toolchainVendor=ADOPTIUM
++toolchainVersion=17

@@ -578,8 +578,6 @@ class AudioPlayActivity :
 
         binding.toolBar.setAllIconsColor(colorOnSurface)
         binding.progressLoading.setIndicatorColor(colorPrimary)
-        binding.settingSlider.tickActiveTintList = ColorStateList.valueOf(colorSurface)
-        binding.settingSlider.tickInactiveTintList = ColorStateList.valueOf(colorPrimary)
 
         binding.tvSubTitle.setTextColor(colorOnSurfaceVariant)
         binding.btnTimer.imageTintList = ColorStateList.valueOf(colorOnSurface)
