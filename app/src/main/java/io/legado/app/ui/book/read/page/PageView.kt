@@ -196,7 +196,7 @@ class PageView(context: Context) : FrameLayout(context) {
         tvFooterMiddle.tag = null
         tvFooterRight.tag = null
         llHeader.isGone = when (ReadTipConfig.headerMode) {
-            1 -> false
+            0 -> false
             2 -> true
             else -> !ReadBookConfig.hideStatusBar
         }

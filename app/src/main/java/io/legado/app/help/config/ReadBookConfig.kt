@@ -736,7 +736,7 @@ object ReadBookConfig {
     @Keep
     data class Config(
         var name: String = "",
-        var bgStr: String = "176.jpg",//白天背景
+        var bgStr: String = "177.jpg",//白天背景
         var bgStrNight: String = "#000000",//夜间背景
         var menuBgColor: String = "#EEEFE3",
         var menuAcColor: String = "#EEEFE3",
@@ -765,7 +765,7 @@ object ReadBookConfig {
         var headerFontSize: Int = 12,//页眉字号
         var footerFontSize: Int = 12,//页脚字号
         var textBold: Int = 500,//是否粗体字 0:正常, 1:粗体, 2:细体
-        var textSize: Int = 20,//文字大小
+        var textSize: Int = 22,//文字大小
         var textItalic: Boolean = false,// 是否启用斜体
         var textShadow: Boolean = false,// 是否启用阴影
         var shadowRadius: Float = 16f,// 阴影模糊半径
@@ -773,9 +773,9 @@ object ReadBookConfig {
         var shadowDy: Float = 1f,// 阴影y偏移
         private var shadowColor: String = "#3E3D3B",
         private var shadowColorN: String = "#3E3D3B",
-        var letterSpacing: Float = 0.1f,//字间距
+        var letterSpacing: Float = 0.02f,//字间距
         var lineSpacingExtra: Int = 12,//行间距
-        var paragraphSpacing: Int = 2,//段距
+        var paragraphSpacing: Int = 10,//段距
         var titleMode: Int = 0,//标题位置 0:居左 1:居中 2:隐藏
         var titleSize: Int = 0,
         var titleTopSpacing: Int = 0,
@@ -798,31 +798,31 @@ object ReadBookConfig {
         var dottedLine: Boolean = false, //虚线
         var dottedBase: Float = 6f, //长度
         var dottedRatio: Float = 6f,
-        var paddingBottom: Int = 25,
-        var paddingLeft: Int = 16,
-        var paddingRight: Int = 16,
-        var paddingTop: Int = 6,
-        var headerPaddingBottom: Int = 0,
-        var headerPaddingLeft: Int = 16,
-        var headerPaddingRight: Int = 16,
-        var headerPaddingTop: Int = 0,
-        var footerPaddingBottom: Int = 6,
+        var paddingBottom: Int = 18,
+        var paddingLeft: Int = 28,
+        var paddingRight: Int = 28,
+        var paddingTop: Int = 18,
+        var headerPaddingBottom: Int = 3,
+        var headerPaddingLeft: Int = 28,
+        var headerPaddingRight: Int = 20,
+        var headerPaddingTop: Int = 22,
+        var footerPaddingBottom: Int = 22,
         var footerPaddingLeft: Int = 16,
-        var footerPaddingRight: Int = 16,
+        var footerPaddingRight: Int = 28,
         var footerPaddingTop: Int = 6,
         var showHeaderLine: Boolean = false,
-        var showFooterLine: Boolean = true,
+        var showFooterLine: Boolean = false,
         var tipHeaderLeft: Int = ReadTipConfig.time,
         var tipHeaderMiddle: Int = ReadTipConfig.none,
-        var tipHeaderRight: Int = ReadTipConfig.battery,
-        var tipFooterLeft: Int = ReadTipConfig.chapterTitle,
+        var tipHeaderRight: Int = ReadTipConfig.none,
+        var tipFooterLeft: Int = ReadTipConfig.none,
         var tipFooterMiddle: Int = ReadTipConfig.none,
         var tipFooterRight: Int = ReadTipConfig.pageAndTotal,
         var tipHeaderColor: Int = 0,
         var tipFooterColor: Int = 0,
         var tipDividerColor: Int = -1,
         var headerMode: Int = 0,
-        var footerMode: Int = 1,
+        var footerMode: Int = 0,
         var regexColorRules: ArrayList<RegexColorRule> = arrayListOf()
     ) {
 

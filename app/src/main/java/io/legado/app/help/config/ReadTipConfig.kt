@@ -105,8 +105,8 @@ object ReadTipConfig {
 
     fun getHeaderModes(context: Context): LinkedHashMap<Int, String> {
         return linkedMapOf(
-            Pair(0, context.getString(R.string.hide_when_status_bar_show)),
-            Pair(1, context.getString(R.string.show)),
+            Pair(0, context.getString(R.string.show)),
+            Pair(1, context.getString(R.string.hide_when_status_bar_show)),
             Pair(2, context.getString(R.string.hide))
         )
     }
