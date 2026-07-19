@@ -3,6 +3,9 @@
     <!--App-->
     <string name="app_name">Legado</string>
     <string name="app_name_a">Legado·A</string>
+
+    <string name="hitokoto_widget">Hitokoto</string>
+    <string name="hitokoto_fallback">思念悬枝，月影迟迟</string>
     <string name="receiving_shared_label">Legado·search</string>
     <string name="tip_perm_request_storage">Legado needs storage access to find and read books. Please go "App Settings" to allow "Storage Permission".</string>
 
@@ -410,17 +413,17 @@
     <string name="sort_manual">Sort manually</string>
     <string name="sort_default">Sort default</string>
     <string name="sort_by_name">Sort by name</string>
-	<string name="sort_order">Sort Order</string>
-	<string name="layout_mode">Layout Mode</string>
-	<string name="layout_mode_list">List</string>
-	<string name="layout_mode_grid">Grid</string>
-	<string name="grid_style">Grid Style</string>
-	<string name="compact_title_font">Compact Title Font</string>
-	<string name="center_aligned_title">Center-Aligned Title</string>
-	<string name="compact_mode">Compact Mode</string>
-	<string name="show_divider_line">Show Divider Lines</string>
-	<string name="max_title_lines">Max Title Lines</string>
-	<string name="cover_shadow">Show Cover Shadow</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="layout_mode">Layout Mode</string>
+    <string name="layout_mode_list">List</string>
+    <string name="layout_mode_grid">Grid</string>
+    <string name="grid_style">Grid Style</string>
+    <string name="compact_title_font">Compact Title Font</string>
+    <string name="center_aligned_title">Center-Aligned Title</string>
+    <string name="compact_mode">Compact Mode</string>
+    <string name="show_divider_line">Show Divider Lines</string>
+    <string name="max_title_lines">Max Title Lines</string>
+    <string name="cover_shadow">Show Cover Shadow</string>
     <string name="go_to_top">Scroll to the top</string>
     <string name="go_to_bottom">Scroll to the bottom</string>
     <string name="read_y">Read: %s</string>
@@ -1069,7 +1072,7 @@
     <string name="only_wifi_summary">Load network cover only under wifi</string>
     <string name="cover_rule">Cover Rules</string>
     <string name="search_via_url">Search via URL</string>
-	<string name="cover_rule_edit">Cover Rules</string>
+    <string name="cover_rule_edit">Cover Rules</string>
     <string name="cover_rule_summary">Use the cover rule to retrieve the cover when entering the details page</string>
     <string name="scroll_to_dur_source">Navigate to the current book source</string>
     <string name="sys_tts_config">System tts Settings</string>
@@ -1535,4 +1538,7 @@
     <string name="download_setting">Download</string>
     <string name="image_cache">Image Cache</string>
     <string name="network">Network</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>

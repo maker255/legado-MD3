@@ -23,18 +23,42 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:scheme="*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data
+                android:mimeType="*/*"
+                android:scheme="*" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT" />
+
+            <data android:mimeType="text/plain" />
+        </intent>
+    </queries>
+
     <application
         android:name=".App"
         android:allowBackup="true"
+        android:enableOnBackInvokedCallback="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="${app_name}"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
-        android:enableOnBackInvokedCallback="true"
-        android:hardwareAccelerated="true"
         android:supportsRtl="true"
         android:theme="@style/Base.AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
+
         <!-- 图标0 -->
         <activity
             android:name=".ui.main.LauncherW"
@@ -43,6 +67,7 @@
             android:icon="@mipmap/launcherw">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -53,6 +78,7 @@
             android:icon="@mipmap/launcher0">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -64,6 +90,7 @@
             android:icon="@mipmap/launcher1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -75,6 +102,7 @@
             android:icon="@mipmap/launcher2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -86,6 +114,7 @@
             android:icon="@mipmap/launcher3">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -97,6 +126,7 @@
             android:icon="@mipmap/launcher4">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -108,6 +138,7 @@
             android:icon="@mipmap/launcher5">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -119,6 +150,7 @@
             android:icon="@mipmap/launcher6">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -127,10 +159,11 @@
             android:name=".ui.main.MainActivity"
             android:alwaysRetainTaskState="true"
             android:enableOnBackInvokedCallback="true"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -142,8 +175,8 @@
         <!-- 阅读界面 -->
         <activity
             android:name=".ui.book.read.ReadBookActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="uiMode|orientation|screenSize"
+            android:enableOnBackInvokedCallback="true"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>
@@ -158,8 +191,8 @@
         <!-- 阅读漫画界面 -->
         <activity
             android:name=".ui.book.manga.ReadMangaActivity"
-            android:exported="false"
             android:enableOnBackInvokedCallback="true"
+            android:exported="false"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="com.samsung.android.support.REMOTE_ACTION" />
@@ -182,12 +215,12 @@
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- 音频播放界面 -->
         <activity
-            android:name="io.legado.app.ui.book.audio.AudioPlayActivity"
+            android:name=".ui.book.audio.AudioPlayActivity"
             android:enableOnBackInvokedCallback="true"
             android:launchMode="singleTask" />
         <!-- 授权界面 -->
         <activity
-            android:name="io.legado.app.lib.permission.PermissionActivity"
+            android:name=".lib.permission.PermissionActivity"
             android:enableOnBackInvokedCallback="true"
             android:theme="@style/Activity.Permission" />
         <!-- 二维码扫描 -->
@@ -198,15 +231,15 @@
         <!-- 书源编辑 -->
         <activity
             android:name=".ui.book.source.edit.BookSourceEditActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="locale|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:enableOnBackInvokedCallback="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- 订阅源编辑 -->
         <activity
             android:name=".ui.rss.source.edit.RssSourceEditActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="locale|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:enableOnBackInvokedCallback="true"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <!-- 搜索界面 -->
@@ -238,8 +271,8 @@
         <activity
             android:name=".ui.replace.ReplaceRuleActivity"
             android:enableOnBackInvokedCallback="true"
-            android:windowSoftInputMode="adjustResize"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustResize" />
         <!-- 书源调试 -->
         <activity
             android:name=".ui.book.source.debug.BookSourceDebugActivity"
@@ -268,33 +301,33 @@
         <!-- WebView界面 -->
         <activity
             android:name=".ui.browser.WebViewActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="locale|keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout"
+            android:enableOnBackInvokedCallback="true"
             android:launchMode="standard" />
         <!-- 书源登录 -->
         <activity
-            android:name="io.legado.app.ui.login.SourceLoginActivity"
-            android:enableOnBackInvokedCallback="true"
+            android:name=".ui.login.SourceLoginActivity"
             android:configChanges="orientation|screenSize"
+            android:enableOnBackInvokedCallback="true"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.Transparent" />
         <!-- 字典管理 -->
         <activity
             android:name=".ui.dict.rule.DictRuleActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="orientation|screenSize"
+            android:enableOnBackInvokedCallback="true"
             android:hardwareAccelerated="true" />
         <!-- 文件管理 -->
         <activity
             android:name=".ui.file.FileManageActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="orientation|screenSize"
+            android:enableOnBackInvokedCallback="true"
             android:hardwareAccelerated="true" />
         <!-- 选择文件 -->
         <activity
             android:name=".ui.file.HandleFileActivity"
-            android:enableOnBackInvokedCallback="true"
             android:configChanges="orientation|screenSize"
+            android:enableOnBackInvokedCallback="true"
             android:hardwareAccelerated="true"
             android:theme="@style/AppTheme.Transparent" />
         <!-- 文字处理 -->
@@ -350,6 +383,7 @@
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.Transparent">
+
             <!-- VIEW (Open with) action -->
             <!-- Works when an app knows the media type of a file, e.g. Gmail or Chrome. -->
             <intent-filter>
@@ -386,17 +420,16 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data android:host="*" />
-
                 <data android:scheme="app" />
                 <data android:scheme="content" />
                 <data android:scheme="file" />
                 <!-- This media type is necessary, otherwise it won't match on the file extension -->
                 <data android:mimeType="*/*" />
-                <!--TXT-->
+                <!-- TXT -->
                 <data android:pathAdvancedPattern=".*\\.[tT][xX][tT]" />
                 <data android:pathPattern=".*\\.txt" />
                 <data android:pathPattern=".*\\.TXT" />
-                <!--JSON-->
+                <!-- JSON -->
                 <data android:pathAdvancedPattern=".*\\.[jJ][sS][oO][nN]" />
                 <data android:pathPattern=".*\\.json" />
                 <data android:pathPattern=".*\\.JSON" />
@@ -453,8 +486,7 @@
             android:foregroundServiceType="dataSync"
             android:icon="@drawable/ic_web_service_noti"
             android:label="legado Web Service"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            >
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
@@ -504,7 +536,6 @@
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
                 tools:node="remove" />
         </provider>
-
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
             android:authorities="${applicationId}.firebaseinitprovider"
@@ -514,26 +545,18 @@
         <meta-data
             android:name="channel"
             android:value="${APP_CHANNEL_VALUE}" />
-    </application>
 
-    <queries>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data android:scheme="*" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.VIEW" />
-            <data
-                android:mimeType="*/*"
-                android:scheme="*" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.TTS_SERVICE" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.PROCESS_TEXT" />
-            <data android:mimeType="text/plain" />
-        </intent>
-    </queries>
+        <receiver
+            android:name=".receiver.HitokotoWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/hitokoto_widget_info" />
+        </receiver>
+    </application>
 
 </manifest>

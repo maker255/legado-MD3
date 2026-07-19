@@ -69,10 +69,13 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="Widget.App.Slider" parent="Widget.Material3.Slider">
-        <item name="trackHeight">4dp</item>
-        <item name="tickVisible">false</item>
-        <item name="tickColor">@android:color/transparent</item>
+    <style name="Widget.Legado.AppWidget.Container" parent="android:Widget">
+        <item name="android:id">@android:id/background</item>
+        <item name="android:background">?android:attr/colorBackground</item>
     </style>
 
+    <style name="Widget.Legado.AppWidget.InnerView" parent="android:Widget">
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
 </resources>
