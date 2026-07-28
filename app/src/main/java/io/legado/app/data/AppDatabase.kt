@@ -298,34 +298,11 @@ abstract class AppDatabase : RoomDatabase() {
                     where not exists (select * from book_groups where groupId = ${BookGroup.IdReadFinished})
                 """.trimIndent()
                 db.execSQL(insertGroupReadFinished)
+                // 已移除的内置分组: -4 网络未分组, -5 本地未分组, -23 连载已读, -24 完本已读
                 @Language("sql")
-                val insertGroupReadFinishedUpdate = """
-                    insert into book_groups(groupId, groupName, 'order', show) 
-                    select ${BookGroup.IdReadFinishedUpdate}, '连载已读', -27, 1
-                    where not exists (select * from book_groups where groupId = ${BookGroup.IdReadFinishedUpdate})
-                """.trimIndent()
-                db.execSQL(insertGroupReadFinishedUpdate)
-                @Language("sql")
-                val insertGroupReadFinishedComplete = """
-                    insert into book_groups(groupId, groupName, 'order', show) 
-                    select ${BookGroup.IdReadFinishedComplete}, '完本已读', -26, 1
-                    where not exists (select * from book_groups where groupId = ${BookGroup.IdReadFinishedComplete})
-                """.trimIndent()
-                db.execSQL(insertGroupReadFinishedComplete)
-                @Language("sql")
-                val insertBookGroupNetNoneGroupSql = """
-                    insert into book_groups(groupId, groupName, 'order', show) 
-                    select ${BookGroup.IdNetNone}, '网络未分组', -7, 1
-                    where not exists (select * from book_groups where groupId = ${BookGroup.IdNetNone})
-                """.trimIndent()
-                db.execSQL(insertBookGroupNetNoneGroupSql)
-                @Language("sql")
-                val insertBookGroupLocalNoneGroupSql = """
-                    insert into book_groups(groupId, groupName, 'order', show) 
-                    select ${BookGroup.IdLocalNone}, '本地未分组', -6, 0
-                    where not exists (select * from book_groups where groupId = ${BookGroup.IdLocalNone})
-                """.trimIndent()
-                db.execSQL(insertBookGroupLocalNoneGroupSql)
+                val deleteRemovedBookGroupSql =
+                    "delete from book_groups where groupId in (-4, -5, -23, -24)"
+                db.execSQL(deleteRemovedBookGroupSql)
                 @Language("sql")
                 val insertBookGroupErrorSql = """
                     insert into book_groups(groupId, groupName, 'order', show) 

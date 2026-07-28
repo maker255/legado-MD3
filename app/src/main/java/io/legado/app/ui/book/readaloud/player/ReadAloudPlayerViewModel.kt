@@ -40,6 +40,10 @@ class ReadAloudPlayerViewModel(
             ReadAloudPlayerIntent.PreviousChapter -> coordinator.previousChapter()
             ReadAloudPlayerIntent.NextChapter -> coordinator.nextChapter()
             ReadAloudPlayerIntent.OpenSettings -> effect(ReadAloudPlayerEffect.ReturnToReaderSettings)
+            ReadAloudPlayerIntent.Stop -> {
+                coordinator.stop()
+                effect(ReadAloudPlayerEffect.Close)
+            }
             ReadAloudPlayerIntent.SwitchToClassic -> effect(ReadAloudPlayerEffect.ReturnToClassic)
             ReadAloudPlayerIntent.OpenToc -> effect(ReadAloudPlayerEffect.OpenToc)
             is ReadAloudPlayerIntent.SetBgMode -> AppConfigStore.putInt(

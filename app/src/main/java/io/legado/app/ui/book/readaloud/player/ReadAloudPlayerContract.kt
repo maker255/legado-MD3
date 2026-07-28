@@ -42,6 +42,7 @@ sealed interface ReadAloudPlayerIntent {
     data object PreviousParagraph : ReadAloudPlayerIntent
     data object NextParagraph : ReadAloudPlayerIntent
     data object OpenSettings : ReadAloudPlayerIntent
+    data object Stop : ReadAloudPlayerIntent
     data object SwitchToClassic : ReadAloudPlayerIntent
     data object OpenToc : ReadAloudPlayerIntent
     data class SetBgMode(val value: Int) : ReadAloudPlayerIntent
@@ -54,4 +55,5 @@ sealed interface ReadAloudPlayerEffect {
     data object OpenToc : ReadAloudPlayerEffect
     data object ReturnToReaderSettings : ReadAloudPlayerEffect
     data object ReturnToClassic : ReadAloudPlayerEffect
+    data object Close : ReadAloudPlayerEffect
 }

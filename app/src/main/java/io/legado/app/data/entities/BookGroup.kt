@@ -32,16 +32,12 @@ data class BookGroup(
         const val IdAll = -1L
         const val IdLocal = -2L
         const val IdAudio = -3L
-        const val IdNetNone = -4L
-        const val IdLocalNone = -5L
         const val IdManga = -7L
         const val IdText = -8L
         const val IdError = -11L
         const val IdReading = -20L
         const val IdUnread = -21L
         const val IdReadFinished = -22L
-        const val IdReadFinishedUpdate = -23L
-        const val IdReadFinishedComplete = -24L
     }
 
     data class GroupNameInfo(
@@ -54,16 +50,12 @@ data class BookGroup(
             IdAll -> GroupNameInfo(groupName, context.getString(R.string.all))
             IdAudio -> GroupNameInfo(groupName, context.getString(R.string.audio))
             IdLocal -> GroupNameInfo(groupName, context.getString(R.string.local))
-            IdNetNone -> GroupNameInfo(groupName, context.getString(R.string.net_no_group))
-            IdLocalNone -> GroupNameInfo(groupName, context.getString(R.string.local_no_group))
             IdManga -> GroupNameInfo(groupName, context.getString(R.string.manga))
             IdText -> GroupNameInfo(groupName, context.getString(R.string.noval))
             IdError -> GroupNameInfo(groupName, context.getString(R.string.update_book_fail))
             IdReading -> GroupNameInfo(groupName, context.getString(R.string.is_reading))
             IdUnread -> GroupNameInfo(groupName, context.getString(R.string.is_unread))
             IdReadFinished -> GroupNameInfo(groupName, context.getString(R.string.is_read_finished))
-            IdReadFinishedUpdate -> GroupNameInfo(groupName, context.getString(R.string.is_read_finished_update))
-            IdReadFinishedComplete -> GroupNameInfo(groupName, context.getString(R.string.is_read_finished_complete))
             else -> GroupNameInfo(groupName)
         }
     }

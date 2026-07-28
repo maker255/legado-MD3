@@ -452,6 +452,7 @@ fun ReadBookScreen(
                         onIntent(ReadBookIntent.ShowSheet(ReadBookSheet.ReadAloudConfig))
                     ReadAloudPlayerEffect.ReturnToClassic ->
                         onIntent(ReadBookIntent.OpenClassicReadAloudControls)
+                    ReadAloudPlayerEffect.Close -> dismissSheet()
                 }
             }
         }

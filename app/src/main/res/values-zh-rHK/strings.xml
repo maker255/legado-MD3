@@ -1090,7 +1090,6 @@
     <string name="refresh_sort">刷新分类</string>
     <string name="cover_decode_js">封面解密（coverDecodeJs）</string>
     <string name="net_no_group">网络未分组</string>
-    <string name="local_no_group">本地未分组</string>
     <string name="parallel_export_book">多线程导出</string>
     <string name="progress_bar_behavior">进度条行为</string>
     <string name="source_edit_text_max_line">源编辑框最大行数</string>
@@ -1815,8 +1814,6 @@
     <string name="is_blur_progressive_enable">啟用漸進式模糊</string>
     <string name="is_event_listener">事件監聽器</string>
     <string name="is_read_finished">已讀完</string>
-    <string name="is_read_finished_complete">已讀完（完結）</string>
-    <string name="is_read_finished_update">已讀完（連載）</string>
     <string name="is_reading">閲讀中</string>
     <string name="is_unread">未讀</string>
     <string name="js_disabled">JS 已禁用</string>

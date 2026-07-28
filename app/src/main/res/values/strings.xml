@@ -1305,7 +1305,6 @@
     <string name="refresh_sort">Refresh sort</string>
     <string name="cover_decode_js">Decode Cover Js(coverDecodeJs)</string>
     <string name="net_no_group">Network ungrouped</string>
-    <string name="local_no_group">Local ungrouped</string>
     <string name="parallel_export_book">Multithreaded export</string>
     <string name="progress_bar_behavior">Progress Bar Behavior</string>
     <string name="source_edit_text_max_line">Maximum Number of Rows in the Source Edit Box</string>
@@ -1793,8 +1792,6 @@
     <string name="is_reading">Reading</string>
     <string name="is_unread">Unread</string>
     <string name="is_read_finished">Finished</string>
-    <string name="is_read_finished_update">Finished (Serial)</string>
-    <string name="is_read_finished_complete">Finished (Completed)</string>
     <string name="manga">Manga</string>
     <string name="noval">Novel</string>
     <string name="cover_show_shadow">Show Font Shadow</string>

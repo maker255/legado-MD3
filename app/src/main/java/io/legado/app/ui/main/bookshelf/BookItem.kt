@@ -219,11 +219,7 @@ fun BookshelfItem(
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.Top)
-                            .width(coverWidth.dp)
-                    ) {
+                    Box(modifier = Modifier.width(coverWidth.dp)) {
                         Box(
                             modifier = Modifier
                                 .padding(4.dp)

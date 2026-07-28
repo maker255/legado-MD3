@@ -122,6 +122,8 @@ class ReadAloudPlayerCoordinator(
         }
     }
 
+    fun stop() = ReadAloud.stop(application)
+
     fun previousParagraph() = ReadAloud.prevParagraph(application)
     fun nextParagraph() = ReadAloud.nextParagraph(application)
     fun previousChapter() = ReadBook.moveToPrevChapter(true, false)

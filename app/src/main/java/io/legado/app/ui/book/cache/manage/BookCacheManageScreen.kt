@@ -98,6 +98,9 @@ fun BookCacheManageRouteScreen(
     )
 }
 
+/** 缓存管理页内部的"未分组"筛选标记, 不对应任何书架分组 */
+private const val FILTER_ID_NO_GROUP = -4L
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun BookCacheManageScreen(
@@ -117,7 +120,7 @@ private fun BookCacheManageScreen(
         allBooks.filter { book ->
             val matchesGroup = when (selectedGroupId) {
                 BookGroup.IdAll -> true
-                BookGroup.IdNetNone -> !book.isNotShelf && book.group == 0L
+                FILTER_ID_NO_GROUP -> !book.isNotShelf && book.group == 0L
                 else -> !book.isNotShelf && (book.group and selectedGroupId) > 0L
             }
             val matchesSearch = !isSearchMode || searchKey.isBlank() ||
@@ -146,7 +149,7 @@ private fun BookCacheManageScreen(
     val groupOptions = remember(state.groups, allGroupText, noGroupText) {
         listOf(
             BookGroup.IdAll to allGroupText,
-            BookGroup.IdNetNone to noGroupText,
+            FILTER_ID_NO_GROUP to noGroupText,
         ) + state.groups.map { it.groupId to it.groupName }
     }
 

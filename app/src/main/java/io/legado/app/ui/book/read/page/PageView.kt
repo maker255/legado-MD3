@@ -255,7 +255,7 @@ class PageView(
         tvFooterMiddle.tag = null
         tvFooterRight.tag = null
         llHeader.isGone = when (ReadBookConfig.headerMode) {
-            1 -> false
+            0 -> false
             2 -> true
             else -> !ReadBookConfig.hideStatusBar
         }

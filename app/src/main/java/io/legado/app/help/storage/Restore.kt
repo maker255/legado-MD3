@@ -76,6 +76,9 @@ object Restore : KoinComponent {
 
     private const val TAG = "Restore"
 
+    /** 已移除的内置分组: -4 网络未分组, -5 本地未分组, -23 连载已读, -24 完本已读 */
+    private val removedBookGroupIds = longArrayOf(-4L, -5L, -23L, -24L)
+
     suspend fun restore(context: Context, uri: Uri) {
         BackupRestoreLock.withLock {
             LogUtils.d(TAG, "开始恢复备份 uri:$uri")
@@ -150,7 +153,9 @@ object Restore : KoinComponent {
         }
         if (BackupConfig.dbIsNotIgnored("bookGroup")) {
             fileToListT<BookGroup>(path, "bookGroup.json")?.let {
-                appDb.bookGroupDao.replaceAll(it)
+                appDb.bookGroupDao.replaceAll(
+                    it.filterNot { group -> group.groupId in removedBookGroupIds }
+                )
             }
         }
         if (BackupConfig.dbIsNotIgnored("bookSource")) {

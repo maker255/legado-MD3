@@ -791,8 +791,8 @@ object ReadBookConfig {
 
     fun getHeaderModes(context: Context): LinkedHashMap<Int, String> {
         return linkedMapOf(
-            Pair(0, context.getString(R.string.hide_when_status_bar_show)),
-            Pair(1, context.getString(R.string.show)),
+            Pair(0, context.getString(R.string.show)),
+            Pair(1, context.getString(R.string.hide_when_status_bar_show)),
             Pair(2, context.getString(R.string.hide))
         )
     }
@@ -892,7 +892,7 @@ object ReadBookConfig {
     @Keep
     data class Config(
         var name: String = "",
-        var bgStr: String = "#EEEEEE",//白天背景
+        var bgStr: String = "w.jpg",//白天背景
         var bgStrNight: String = "#000000",//夜间背景
         @Transient
         var menuBgColor: String = "#EEEFE3",
@@ -904,7 +904,7 @@ object ReadBookConfig {
         var menuAcColorNight: String = "#586249",
         var bgStrEInk: String = "#FFFFFF",//EInk背景
         var bgAlpha: Int = 100,//背景透明度
-        var bgType: Int = 0,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
+        var bgType: Int = 1,//白天背景类型 0:颜色, 1:assets图片, 2其它图片
         var bgTypeNight: Int = 0,//夜间背景类型
         var bgTypeEInk: Int = 0,//EInk背景类型
         private var darkStatusIcon: Boolean = true,//白天是否暗色状态栏
@@ -916,7 +916,7 @@ object ReadBookConfig {
         private var textAccentColor: String = "#834E00",//白天强调文字颜色
         private var textAccentColorNight: String = "#FE4D55",//夜间强调文字颜色
         private var textAccentColorEInk: String = "#000000",
-        private var pageAnim: Int = 0,//翻页动画
+        private var pageAnim: Int = 2,//翻页动画
         private var pageAnimEInk: Int = 4,
         var textFont: String = "",//字体
         var titleFont: String = "",//标题字体
@@ -966,13 +966,13 @@ object ReadBookConfig {
         var headerPaddingBottom: Int = 0,
         var headerPaddingLeft: Int = 16,
         var headerPaddingRight: Int = 16,
-        var headerPaddingTop: Int = 0,
+        var headerPaddingTop: Int = 10,
         var footerPaddingBottom: Int = 6,
-        var footerPaddingLeft: Int = 16,
-        var footerPaddingRight: Int = 16,
+        var footerPaddingLeft: Int = 30,
+        var footerPaddingRight: Int = 30,
         var footerPaddingTop: Int = 6,
         var showHeaderLine: Boolean = false,
-        var showFooterLine: Boolean = true,
+        var showFooterLine: Boolean = false,
         var tipHeaderLeft: Int = tipTime,
         var tipHeaderMiddle: Int = tipNone,
         var tipHeaderRight: Int = tipBattery,
@@ -990,8 +990,8 @@ object ReadBookConfig {
         var tipFooterColor: Int = 0,
         var tipFooterColorNight: Int = 0,
         var tipDividerColor: Int = -1,
-        var headerMode: Int = 0,
-        var footerMode: Int = 0,
+        var headerMode: Int = 1,
+        var footerMode: Int = 1,
         @Transient
         var menuIconShowText: Boolean = true,
         @Transient
